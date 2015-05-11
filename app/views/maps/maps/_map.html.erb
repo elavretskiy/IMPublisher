@@ -1,0 +1,39 @@
+<div class="form-group center-block" style="width: 800px;">
+  <div id="map" style="width: 800px; height: 400px;"></div>
+</div>
+
+<script>
+  handler = Gmaps.build('Google');
+
+  handler.buildMap({ internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%= raw @markers.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+
+    if(navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(displayOnMap);
+  });
+
+  function displayOnMap(position){
+    var marker = handler.addMarker({
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+      title: 'Моя текущая позиция',
+      picture: {
+        url: 'https://maps.gstatic.com/mapfiles/ms2/micons/green-dot.png',
+        width:  36,
+        height: 36
+      }
+    });
+
+    $('#latitude').val(position.coords.latitude);
+    $('#longitude').val(position.coords.longitude);
+
+    if (<%= @markers.blank? %>)
+      handler.map.centerOn(marker);
+    else {
+      handler.bounds.extendWith(marker);
+      handler.fitMapToBounds();
+    };
+  };
+</script>

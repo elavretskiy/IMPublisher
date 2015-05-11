@@ -1,0 +1,27 @@
+<h2>Мои карты</h2>
+
+<% if @maps.any? %>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Карта</th>
+      <th>Адрес</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @maps.each do |map| %>
+      <tr class="table">
+        <td><%= map.title %></td>
+        <td><%= map_url(map) %></td>
+        <td class="col-md-1"><%= link_to 'Показать', map_path(map) %></td>
+        <td class="col-md-1"><%= link_to 'Редактировать', edit_map_path(map) %></td>
+        <td class="col-md-1"><%= link_to 'Удалить', map, method: :delete,
+                    data: { confirm: 'Удалить карту?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= link_to 'Добавить карту', new_map_path, class: 'btn btn-default', role: 'button' %>

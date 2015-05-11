@@ -1,0 +1,41 @@
+<%= simple_form_for map do |f| %>
+  <div class="form-group">
+    <%= f.input :title, label: 'Название карты',
+                input_html: { class: 'form-control', autofocus: true } %>
+  </div>
+
+  <% if params[:action] == 'edit' %>
+    <div class="form-group">
+      <%= label_tag 'Адрес карты: ', nil %>
+      <%= map_url %>
+    </div>
+  <% end %>
+
+  <%= render 'maps/markers/all_markers', map: map %>
+
+  <div class="form-group" id="add_marker_fields">
+    <%= link_to_add_association 'Добавить метку', f, :markers,
+                                class: 'btn btn-default', role: 'button',
+                                partial: 'maps/markers/marker_fields'%>
+    <%= f.button :submit, 'Сохранить карту', class: 'btn btn-default' %>
+    <%= link_to 'Вернуться назад', maps_path, class: 'btn btn-default',
+                role: 'button', data: { confirm: 'Продолжить без сохранения изменений?' } %>
+  </div>
+
+  <%= hidden_field_tag :latitude %>
+  <%= hidden_field_tag :longitude %>
+<% end %>
+
+<div id="add_edit_map">
+  <%= render 'map' %>
+</div>
+
+<script>
+  $(function() {
+    $("#add_marker_fields a.add_fields").
+        data("association-insertion-method", 'append').
+        data("association-insertion-node", '#markers');
+
+    $("#edit_map_<%= @map.id %>").attr('data-remote', 'true')
+  });
+</script>

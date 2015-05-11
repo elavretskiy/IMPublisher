@@ -1,0 +1,25 @@
+$("#markers").html("<%= escape_javascript render('maps/markers/db_markers', map: @map) %>");
+
+handler = Gmaps.build('Google');
+
+handler.buildMap({ internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%= raw @markers.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+
+  if ($('#latitude').val() && $('#longitude').val()) {
+    marker = handler.addMarker({
+      lat: $('#latitude').val(),
+      lng: $('#longitude').val(),
+      title: 'Моя текущая позиция',
+      picture: {
+        url: 'https://maps.gstatic.com/mapfiles/ms2/micons/green-dot.png',
+        width: 36,
+        height: 36
+      }
+    });
+
+    handler.bounds.extendWith(marker);
+    handler.fitMapToBounds();
+  };
+});

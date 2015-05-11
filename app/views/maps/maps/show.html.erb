@@ -1,0 +1,13 @@
+<h2>Просмотр карты</h2>
+
+<div class="form-group">
+  <%= label_tag 'Название карты: ', nil %>
+  <%= @map.title %>
+</div>
+
+<div class="form-group">
+  <%= label_tag 'Адрес карты: ', nil %>
+  <%= map_url %>
+</div>
+
+<%= render 'map' %>

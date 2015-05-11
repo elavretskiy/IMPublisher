@@ -1,0 +1,11 @@
+<h1>Last markers on google maps</h1>
+
+<ul class="list-nostyle">
+  <li data-foreach-item="items">
+    <span class="title" data-bind="item.title"></span><span> - </span>
+    <span>Широта: </span><span class="latitude" data-bind="item.latitude"></span>
+    <span>, Долгота: </span><span class="longitude" data-bind="item.longitude"></span></br>
+  </li>
+</ul>
+
+<p class="updated-at" data-bind="updatedAtMessage"></p>

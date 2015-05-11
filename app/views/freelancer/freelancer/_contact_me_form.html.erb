@@ -1,0 +1,43 @@
+<%= form_tag '/freelancer/contact_me', method: 'post' do %>
+  <div class="row control-group">
+    <div class="form-group col-xs-12 floating-label-form-group controls">
+      <label>Name</label>
+      <input type="text" class="form-control" placeholder="Name" id="name"
+             required data-validation-required-message="Please enter your name."
+             name="freelancer[name]">
+      <p class="help-block text-danger"></p>
+    </div>
+  </div>
+  <div class="row control-group">
+    <div class="form-group col-xs-12 floating-label-form-group controls">
+      <label>Email Address</label>
+      <input type="email" class="form-control" placeholder="Email Address" id="email"
+             required data-validation-required-message="Please enter your email address."
+             name="freelancer[email]">
+      <p class="help-block text-danger"></p>
+    </div>
+  </div>
+  <div class="row control-group">
+    <div class="form-group col-xs-12 floating-label-form-group controls">
+      <label>Mobile Phone</label>
+      <input type="tel" class="form-control" placeholder="Mobile Phone" id="phone"
+             name="freelancer[phone]">
+      <p class="help-block text-danger"></p>
+    </div>
+  </div>
+  <div class="row control-group">
+    <div class="form-group col-xs-12 floating-label-form-group controls">
+      <label>Message</label>
+      <textarea rows="5" class="form-control" placeholder="Message" id="message"
+                name="freelancer[message]"></textarea>
+      <p class="help-block text-danger"></p>
+    </div>
+  </div>
+  <br>
+  <div id="success"></div>
+  <div class="row">
+    <div class="form-group col-xs-12">
+      <button type="submit" class="btn btn-success btn-lg">Send</button>
+    </div>
+  </div>
+<% end %>

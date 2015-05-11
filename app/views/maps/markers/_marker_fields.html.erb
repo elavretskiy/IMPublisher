@@ -1,0 +1,26 @@
+<tr class="table nested-fields">
+  <td class="col-md-2">
+    <%= f.input :latitude, as: :string, label: false, placeholder: 'Широта',
+                input_html: { class: 'form-control', pattern: '-?\d{1,10}\.\d{1,6}',
+                              title: 'десятичные градусы: 41.40338, 2.17403' } %>
+  </td>
+
+  <td class="col-md-2">
+    <%= f.input :longitude, as: :string, label: false, placeholder: 'Долгота',
+                input_html: { class: 'form-control', pattern: '-?\d{1,10}\.\d{1,6}',
+                              title: 'десятичные градусы: 41.40338, 2.17403' } %>
+  </td>
+
+  <td>
+    <%= f.input :title, label: false, input_html: { class: 'form-control' } %>
+  </td>
+
+  <td>
+    <%= f.input :comment, label: false, input_html: { class: 'form-control' } %>
+  </td>
+
+  <td class="col-md-1">
+    <%= link_to_remove_association  'Удалить', f,
+                                    data: { confirm: 'Удалить метку?' } %>
+  </td>
+</tr>

@@ -1,3 +1,7 @@
+==Heroku
+
+https://shielded-falls-1516.herokuapp.com
+
 == Задание № 1
 
 Создать Rails приложение для генерации карт Yandex или Google c размещеннием на них маркеров.
@@ -16,5 +20,5 @@
 
 == Задание № 3
 
-Внедрить в приложение rails http://startbootstrap.com/template-overviews/freelancer/,
+Внедрить в приложение rails http://startbootstrap.com/template-overviews/freelancer,
 форма внизу создает запись в базе и отправку на мыло (любое).
